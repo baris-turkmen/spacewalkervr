@@ -81,4 +81,39 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize with saved language or default
     console.log('Initializing with language:', currentLang);
     setLanguage(currentLang);
+
+    // Add this inside your DOMContentLoaded event listener
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    // Update active state based on scroll position
+    function updateActiveNavLink() {
+        const sections = document.querySelectorAll('section[id]');
+        const scrollY = window.pageYOffset;
+
+        sections.forEach(section => {
+            const sectionHeight = section.offsetHeight;
+            const sectionTop = section.offsetTop - 100;
+            const sectionId = section.getAttribute('id');
+
+            if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${sectionId}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        });
+    }
+
+    // Add scroll event listener
+    window.addEventListener('scroll', updateActiveNavLink);
+
+    // Add click handler for mobile nav links
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            navLinks.forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
+        });
+    });
 }); 
