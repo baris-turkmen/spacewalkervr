@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpacewalkerVR - Virtual Reality Simulators</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <!-- GSAP for smooth animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <!-- ScrollTrigger plugin -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <!-- Add these meta tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#1a0505">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Add this in the head section for Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+    <!-- Option 1: Phosphor Icons -->
+    <script src="https://unpkg.com/phosphor-icons"></script>
+    <!-- Option 2: Remix Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <!-- Option 3: Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+</head>
+<body>
+    <!-- Replace the canvas with video -->
+    <video id="bg-video" 
+        autoplay 
+        muted 
+        loop 
+        playsinline
+        poster="mobile-bg.jpg">
+        <source src="landing_1.mp4" type="video/mp4">
+    </video>
+
+    <!-- Navigation -->
+    <nav class="glass-nav">
+        <div class="logo">
+            <img src="logo.png" alt="SpacewalkerVR">
+        </div>
+        <div class="nav-links">
+            <a href="#home" data-i18n="nav.home">Ana Sayfa</a>
+            <a href="#products" data-i18n="nav.products">Ürünler</a>
+            <a href="#about" data-i18n="nav.about">Hakkımızda</a>
+            <a href="#contact" data-i18n="nav.contact">İletişim</a>
+        </div>
+        <div class="language-switcher">
+            <button type="button" class="lang-btn" data-lang="tr">TR</button>
+            <button type="button" class="lang-btn" data-lang="en">EN</button>
+            <button type="button" class="lang-btn" data-lang="ar">AR</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="hero-content">
+            <h1 data-i18n="hero.title">Sanal Gerçekliği Yeniden Keşfedin</h1>
+            <p data-i18n="hero.subtitle">Patentli teknolojimiz ile güçlendirilmiş en gelişmiş VR Yürüyüş ve Sürüş simülatörleri</p>
+            <button class="cta-button" data-i18n="hero.cta">Ürünleri Keşfet</button>
+        </div>
+        <div class="hero-3d-model">
+            <!-- 3D Model Container -->
+            <div id="vr-model"></div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="glass-section">
+        <h2 data-i18n="products.title">Çözümlerimiz</h2>
+        <div class="product-grid">
+            <!-- VR Walk Simulator Card -->
+            <div class="product-card glass-section">
+                <div class="product-image">
+                    <img src="00-SPACEWALKERVR-V003.17-1024x576.jpg" alt="VR Walk Simulator">
+                </div>
+                <h3 data-i18n="products.walker.title">VR Yürüyüş Simülatörü</h3>
+                <p data-i18n="products.walker.desc">Patentli teknolojimiz ile sanal dünyalarda doğal yürüyüş deneyimi.</p>
+                <button class="cta-button" data-i18n="products.cta">Detaylı Bilgi</button>
+            </div>
+
+            <!-- VR Race Simulator Card -->
+            <div class="product-card glass-section">
+                <div class="product-image">
+                    <img src="pricees and drsses.jpg" alt="VR Race Simulator">
+                </div>
+                <h3 data-i18n="products.racer.title">VR Yarış Simülatörü</h3>
+                <p data-i18n="products.racer.desc">En üst düzey sürüş deneyimi için yüksek performanslı yarış simülasyon sistemi.</p>
+                <button class="cta-button" data-i18n="products.cta">Detaylı Bilgi</button>
+            </div>
+
+            <!-- VR Experience Center Card -->
+            <div class="product-card glass-section">
+                <div class="product-image">
+                    <img src="SPACERIDERVR-V007.13-1024x576.jpg" alt="VR Experience Center">
+                </div>
+                <h3 data-i18n="products.center.title">VR Deneyim Merkezi</h3>
+                <p data-i18n="products.center.desc">Ticari alanlar için eksiksiz VR eğlence çözümleri.</p>
+                <button class="cta-button" data-i18n="products.cta">Detaylı Bilgi</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features">
+        <div class="feature-container">
+            <div class="feature">
+                <div class="feature-icon">🎮</div>
+                <h3 data-i18n="features.patented.title">Patented Technology</h3>
+                <p data-i18n="features.patented.desc">Exclusive mechanics for realistic movement</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🌟</div>
+                <h3 data-i18n="features.custom.title">Custom Solutions</h3>
+                <p data-i18n="features.custom.desc">Tailored VR experiences for your needs</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🔧</div>
+                <h3 data-i18n="features.support.title">Professional Support</h3>
+                <p data-i18n="features.support.desc">Expert installation and maintenance</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Add mobile menu button -->
+    <button class="mobile-menu-btn" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <!-- Add this section before closing body tag -->
+    <section id="contact" class="contact-section glass-section">
+        <h2 data-i18n="contact.title">İletişim</h2>
+        <div class="contact-content">
+            <div class="contact-info">
+                <!-- Email Contact -->
+                <div class="contact-item">
+                    <i class="material-icons-round">mail</i>
+                    <div class="contact-details">
+                        <h3 data-i18n="contact.email">E-posta</h3>
+                        <a href="mailto:info@spacewalkervr.com" class="contact-link" data-tooltip="Kopyalamak için tıklayın">
+                            info@spacewalkervr.com
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Location -->
+                <div class="contact-item">
+                    <i class="material-icons-round">location_on</i>
+                    <div class="contact-details">
+                        <h3>Adres</h3>
+                        <p>İstanbul, Türkiye</p>
+                    </div>
+                </div>
+
+                <!-- Social Media Links -->
+                <div class="social-links">
+                    <a href="#" class="social-icon" aria-label="LinkedIn">
+                        <i class="ri-linkedin-fill"></i>
+                    </a>
+                    <a href="#" class="social-icon" aria-label="Instagram">
+                        <i class="ri-instagram-fill"></i>
+                    </a>
+                    <a href="#" class="social-icon" aria-label="Twitter">
+                        <i class="ri-twitter-fill"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Load translations first -->
+    <script src="translations.js"></script>
+    <!-- Then load main.js -->
+    <script src="main.js"></script>
+</body>
+</html> 
